@@ -26,12 +26,12 @@
     
     <!-- The following pattern defers CSS loading, making page load much faster -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="icon" type="image/jpeg" href="myAvatar.jpeg">
+    <link rel="icon" type="image/jpeg" href="pics/myAvatar.jpeg">
 </head>
 <body>
     <header>
         <div class="logo">
-          <img id="me" loading="lazy" alt="A photo of Yonatan Dvir" src="myAvatar.jpeg">
+          <img id="me" loading="lazy" alt="A photo of Yonatan Dvir" src="pics/myAvatar.jpeg">
     
           <a href="#">Yonatan Dvir</a>
         </div>
@@ -44,6 +44,7 @@
             <li><a href="#education">Education</a></li>
             <li><a href="#employment">Employment</a></li>
             <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#form">write a review</a></li>
             <li><a href="mailto:yonatandvir313@gmail.com" aria-label="email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
           </ul>
         </nav>
@@ -55,5 +56,148 @@
     </header>
 
     
+    
+    <div id="page-wrap">
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <h1 id="welcome">Welcome to my website!</h1>
+        <div>
+            In this website, you can discover who I am. Before you begin, try this game to know me even better 😊
+        </div>
+        <div class="clear"></div>
+
+        <div>
+            <div id="question"></div>
+            <div class="options" id="options"></div>
+            <div id="result">Waiting for your answer.. 👀</div>
+            <button onclick="checkAnswer()">Submit Answer</button>
+            <button onclick="nextQuestion()">Next Question</button>
+            
+            
+        </div>
+    </div>
+
+    <script>
+                // Define an array of questions and answers
+                const questions = [
+                  {
+                    question: 'What is my favorite food? 🍕',
+                    options: [
+                      'pics/sushi.jpeg',
+                      'pics/schnitzel.jpeg',
+                      'pics/pizza.jpeg'
+                    ],
+                    correctAnswer: 1, // Index of the correct answer in the options array (first is 0..)
+                    qestionNumber: 1
+                  },
+                  {
+                    question: 'What is my favorite football club? ⚽️',
+                    options: [
+                      'pics/arsenal.png',
+                      'pics/milan.png',
+                      'pics/real-madrid.png'
+                    ],
+                    correctAnswer: 0,
+                    qestionNumber: 2
+                  },
+                  {
+                    question: 'What programming language is my favorite? 👨🏻‍💻 ',
+                    options: [
+                      'pics/python.png',
+                      'pics/c.png',
+                      'pics/java.png'
+                    ],
+                    correctAnswer: 2, 
+                    qestionNumber: 3
+                  },{
+                    question: 'What dog do I have? 🐶',
+                    options: [
+                      'pics/yorki.jpeg',
+                      'pics/lavrador.jpeg',
+                      'pics/tahash.jpeg'
+                    ],
+                    correctAnswer: 0, 
+                    qestionNumber: 4
+                  },
+                  {
+                    question: 'How many siblings do I have?',
+                    options: [
+                      'pics/two.jpeg',
+                      'pics/three.png',
+                      'pics/four.png'
+                    ],
+                    correctAnswer: 1, 
+                    qestionNumber: 5
+                  }
+                ];
+
+                let currentQuestionIndex = 0;
+                let selectedAnswerIndex = null; // Variable to store the selected answer index
+
+                // Function to display the current question and options
+                function displayQuestion() {
+                    const currentQuestion = questions[currentQuestionIndex];
+
+                    // Display the question
+                    document.getElementById('question').innerHTML = `<h2>Question #${currentQuestion.qestionNumber} ${currentQuestion.question}</h2>`;
+
+                    // Display the options as images
+                    const optionsContainer = document.getElementById('options');
+                    optionsContainer.innerHTML = '';
+
+                    currentQuestion.options.forEach((option, index) => {
+                    const optionImage = document.createElement('img');
+                    optionImage.src = option;
+                    optionImage.alt = `Option ${index + 1}`;
+                    console.log(index)
+                    optionImage.onclick = () => selectOption(index);
+                    optionsContainer.appendChild(optionImage);
+                    });
+                }
+
+                 // Function to handle option selection
+                function selectOption(selectedIndex) {
+                    // Store the selected answer index
+                    selectedAnswerIndex = selectedIndex;
+                    // Highlight the selected option (optional)
+                    document.querySelectorAll('.options img').forEach((option, index) => {
+                    option.style.border = index === selectedIndex ? '5px solid #4caf50' : 'none';
+                    });
+                }
+
+                  // Function to check the selected answer against the correct answer
+                function checkAnswer() {
+                    const currentQuestion = questions[currentQuestionIndex];
+
+                    if (selectedAnswerIndex !== null) {
+                        if (selectedAnswerIndex === currentQuestion.correctAnswer) {
+                            document.getElementById('result').innerHTML = '✅ Correct! You can move to the next question! ✅';
+                        } else {
+                            document.getElementById('result').innerHTML = '❌ Incorrect. Try again! ❌';
+                        }
+                    } else {
+                        document.getElementById('result').innerHTML = 'Please select an answer!';
+                    }
+                }
+                // Function to move to the next question
+                function nextQuestion() {
+                    // let the user move to the next question only when he answered correctly.
+                    if (!(document.getElementById('result').innerHTML == '✅ Correct! You can move to the next question! ✅')){
+                        document.getElementById('result').innerHTML = '❗️ You need to choose the correct option before moving to the next question.. ❗️';
+                        return;
+                    }
+                    if (currentQuestionIndex < questions.length - 1) {
+                    currentQuestionIndex++;
+                    displayQuestion();
+                    document.getElementById('result').innerHTML = 'Waiting for your answer.. 👀';
+                    } else {
+                    document.getElementById('result').innerHTML = '🥳 Game Over. You completed all questions! 🥳';
+                    }
+                }
+
+                // Initialize the game by displaying the first question
+                displayQuestion();
+    </script>
+
 </body>
 </html>

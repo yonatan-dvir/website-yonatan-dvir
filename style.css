@@ -189,3 +189,45 @@ footer i[class*="fa-envelope"]:hover {
   min-width: min(600px, 100%);
 }
 
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    display: inline-block;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #question, #result {
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 18px;
+    width: 75%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .options img {
+    width: 250px;
+    height: 280px;
+    margin: 10px;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .options img:hover {
+    border: 5px solid #4caf50;
+  }
+  
