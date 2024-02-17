@@ -58,146 +58,20 @@
     <div class="clear"></div>
     <div class="clear"></div>
     <div id="page-wrap">
-        <h1 id="welcome">Welcome to my website!</h1>
+        <h1 id="welcome">About Me</h1>
         <div>
             <p>
-                In this website, you can discover who I am. Before you begin, try this game to know me even better 😊
+                I am a 23-year-old Computer Science and Entrepreneurship student at Reichman University, currently in my second year. I am highly motivated and eager to leverage my skills and knowledge to embark on a career as a software developer.
             </p>
-        </div>
-        <div class="clear"></div>
-
-        <div>
-            <div id="question"></div>
-            <div class="options" id="options"></div>
-            <div id="result">Waiting for your answer.. 👀</div>
-            <button onclick="checkAnswer()">Submit Answer</button>
-            <button onclick="nextQuestion()">Next Question</button>
+            <p>
+                With a GPA of 85.8, I bring experience from my role at WeSki, a fast-growing startup. I initially joined as an intern and have progressed to become a QA & Backoffice Representative. Additionally, I manage my own business, Tandir IL, a small online shop specializing in the Tandir cooking tool.
+            </p>
+            <p>
+                Explore my academic journey at <a href="https://www.runi.ac.il/en">Reichman University</a> and discover the unique offerings at <a href="https://www.tandir-il.com">Tandir IL</a>, my digital sales venture.
+            </p>
             
-            
-        </div>
+        </div>    
     </div>
-
-    <script>
-                // Define an array of questions and answers
-                const questions = [
-                  {
-                    question: 'What is my favorite food? 🍕',
-                    options: [
-                      'pics/sushi.jpeg',
-                      'pics/schnitzel.jpeg',
-                      'pics/pizza.jpeg'
-                    ],
-                    correctAnswer: 1, // Index of the correct answer in the options array (first is 0..)
-                    qestionNumber: 1
-                  },
-                  {
-                    question: 'What is my favorite football club? ⚽️',
-                    options: [
-                      'pics/arsenal.png',
-                      'pics/milan.png',
-                      'pics/real-madrid.png'
-                    ],
-                    correctAnswer: 0,
-                    qestionNumber: 2
-                  },
-                  {
-                    question: 'What is my favorite programming language? 👨🏻‍💻 ',
-                    options: [
-                      'pics/python.png',
-                      'pics/c.png',
-                      'pics/java.png'
-                    ],
-                    correctAnswer: 2, 
-                    qestionNumber: 3
-                  },{
-                    question: 'What dog do I have? 🐶',
-                    options: [
-                      'pics/yorki.jpeg',
-                      'pics/lavrador.jpeg',
-                      'pics/tahash.jpeg'
-                    ],
-                    correctAnswer: 0, 
-                    qestionNumber: 4
-                  },
-                  {
-                    question: 'How many siblings do I have?',
-                    options: [
-                      'pics/two.jpeg',
-                      'pics/three.png',
-                      'pics/four.png'
-                    ],
-                    correctAnswer: 1, 
-                    qestionNumber: 5
-                  }
-                ];
-
-                let currentQuestionIndex = 0;
-                let selectedAnswerIndex = null; // Variable to store the selected answer index
-
-                // Function to display the current question and options
-                function displayQuestion() {
-                    const currentQuestion = questions[currentQuestionIndex];
-
-                    // Display the question
-                    document.getElementById('question').innerHTML = `<h2>Question #${currentQuestion.qestionNumber} ${currentQuestion.question}</h2>`;
-
-                    // Display the options as images
-                    const optionsContainer = document.getElementById('options');
-                    optionsContainer.innerHTML = '';
-
-                    currentQuestion.options.forEach((option, index) => {
-                    const optionImage = document.createElement('img');
-                    optionImage.src = option;
-                    optionImage.alt = `Option ${index + 1}`;
-                    console.log(index)
-                    optionImage.onclick = () => selectOption(index);
-                    optionsContainer.appendChild(optionImage);
-                    });
-                }
-
-                 // Function to handle option selection
-                function selectOption(selectedIndex) {
-                    // Store the selected answer index
-                    selectedAnswerIndex = selectedIndex;
-                    // Highlight the selected option (optional)
-                    document.querySelectorAll('.options img').forEach((option, index) => {
-                    option.style.border = index === selectedIndex ? '5px solid #4caf50' : 'none';
-                    });
-                }
-
-                  // Function to check the selected answer against the correct answer
-                function checkAnswer() {
-                    const currentQuestion = questions[currentQuestionIndex];
-
-                    if (selectedAnswerIndex !== null) {
-                        if (selectedAnswerIndex === currentQuestion.correctAnswer) {
-                            document.getElementById('result').innerHTML = '✅ Correct! You can move to the next question! ✅';
-                        } else {
-                            document.getElementById('result').innerHTML = '❌ Incorrect. Try again! ❌';
-                        }
-                    } else {
-                        document.getElementById('result').innerHTML = 'Please select an answer!';
-                    }
-                }
-                // Function to move to the next question
-                function nextQuestion() {
-                    // let the user move to the next question only when he answered correctly.
-                    if (!(document.getElementById('result').innerHTML == '✅ Correct! You can move to the next question! ✅')){
-                        document.getElementById('result').innerHTML = '❗️ You need to choose the correct option before moving to the next question.. ❗️';
-                        return;
-                    }
-                    if (currentQuestionIndex < questions.length - 1) {
-                    currentQuestionIndex++;
-                    displayQuestion();
-                    document.getElementById('result').innerHTML = 'Waiting for your answer.. 👀';
-                    } else {
-                    document.getElementById('result').innerHTML = '🥳 Game Over. You completed all the questions! 🥳';
-                    }
-                }
-
-                // Initialize the game by displaying the first question
-                displayQuestion();
-    </script>
 
 </body>
 </html>
