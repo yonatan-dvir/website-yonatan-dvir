@@ -6,7 +6,7 @@ Welcome to the README file for the My Website project. This project is a persona
 
 The MyWebsite project consists of a static website built using HTML, CSS, and JavaScript. It showcases information about me, my portfolio, and provides a form for visitors to leave reviews about the website.
 
-## Filenames (Q1):
+## Filenames:
 
 - yonatan-dvir.html
 - about.html
@@ -15,12 +15,7 @@ The MyWebsite project consists of a static website built using HTML, CSS, and Ja
 - media.html
 - review.html
 
-## What is jQuery used for? (Q2)
-
-jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
-jQuery takes a lot of common tasks that require many lines of JavaScript code to accomplish, and wraps them into methods that you can call with a single line of code.
-
-## Describe the functionality of my JavaScript code (Q3)
+## Describe the functionality of my JavaScript code
 
 **The JavaScript code in the home page(yonatan-dvir.html) implements a simple quiz game where users are presented with a series of questions and are required to select the correct answer from a set of options displayed as images. Here's a breakdown of the functionality:**
 
@@ -32,7 +27,7 @@ jQuery takes a lot of common tasks that require many lines of JavaScript code to
 
 **Moving to the Next Question:** The nextQuestion() function allows the user to proceed to the next question after answering the current one. However, it first checks if the user has selected the correct answer for the current question. If not, it prompts the user to select the correct option before proceeding. If there are more questions available, it updates the current question index and displays the next question; otherwise, it indicates that the game is over.
 
-## Server-Side Functionality (Q4)
+## Server-Side Functionality
 
 The website includes a form where visitors can write reviews about the website. The form collects the following information from users:
 
